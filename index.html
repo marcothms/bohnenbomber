@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/coffee.svg">
+<title>Bohnen-Bomber</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    font-family: "Inter", sans-serif;
+    color: white;
+
+    background:
+        radial-gradient(circle at top, #6b452b 0%, #3d2415 45%, #1b120d 100%);
+
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background glow */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    margin: auto;
+
+    width: 600px;
+    height: 600px;
+
+    background:
+        radial-gradient(circle,
+            rgba(255, 180, 90, .12),
+            transparent 70%);
+
+    filter: blur(30px);
+
+    animation: glow 12s ease-in-out infinite;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        transform: translate(-60px, -40px);
+    }
+
+    50% {
+        transform: translate(60px, 40px);
+    }
+}
+
+.card {
+    position: relative;
+    z-index: 1;
+
+    width: min(680px, 100%);
+
+    padding: 56px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, .08);
+
+    border: 1px solid rgba(255, 255, 255, .12);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .35);
+}
+
+.icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.3rem, 5vw, 3.4rem);
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .85rem;
+    opacity: .75;
+
+    margin-bottom: 42px;
+}
+
+#coffee {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    line-height: 1.15;
+
+    color: #ffd28a;
+
+    text-shadow:
+        0 0 20px rgba(255, 200, 100, .3);
+
+    min-height: 2.6em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    text-wrap: balance;
+}
+
+button {
+    margin-top: 42px;
+
+    width: 100%;
+    max-width: 340px;
+
+    padding: 18px 24px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: #d8a04f;
+    color: #2d190b;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+
+    display: inline-block;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    background: #e5b366;
+
+    box-shadow:
+        0 10px 25px rgba(216, 160, 79, .4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.footer {
+    margin-top: 28px;
+    font-size: .8rem;
+    opacity: .6;
+}
+
+.fade {
+    animation: fade .45s ease;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Tablets ---------- */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 16px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 36px 24px;
+        border-radius: 22px;
+    }
+
+    .icon {
+        font-size: 3.3rem;
+    }
+
+    h1 {
+        font-size: 2.6rem;
+    }
+
+    .subtitle {
+        margin-bottom: 28px;
+    }
+
+    #coffee {
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+
+    button {
+        max-width: none;
+    }
+
+    body::before {
+        width: 380px;
+        height: 380px;
+    }
+}
+
+/* ---------- Phones ---------- */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .card {
+        padding: 28px 20px;
+        border-radius: 18px;
+    }
+
+    .icon {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    .subtitle {
+        font-size: .8rem;
+        margin-bottom: 24px;
+    }
+
+    #coffee {
+        font-size: clamp(1.9rem, 9vw, 2.8rem);
+        min-height: 2.8em;
+    }
+
+    button {
+        margin-top: 28px;
+        padding: 16px;
+        font-size: 1rem;
+    }
+
+    .footer {
+        margin-top: 20px;
+    }
+}
+
+/* ---------- Very small phones ---------- */
+
+@media (max-width: 360px) {
+
+    .card {
+        padding: 24px 16px;
+    }
+
+    #coffee {
+        font-size: 1.7rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+    <div class="icon">☕</div>
+
+    <h1>Today's Brew</h1>
+
+    <div class="subtitle">
+        The coffee fate has spoken...
+    </div>
+
+    <div id="coffee">Bohnen-Bomber</div>
+
+    <button onclick="pickCoffee()">
+        Pick Another
+    </button>
+</div>
+
+<script>
+
+let coffees=[
+    "Aktivierungs-Aufguss",
+    "Bohnen-Bazooka",
+    "Baller-Bohne",
+    "Bohnen-Ballett",
+    "Bohnen-Beschleuniger",
+    "Bohnen-Blitz",
+    "Bohnen-Bomber",
+    "Crema-Crash",
+    "Dampf-Doping",
+    "Energie-Espresso",
+    "Espresso-Ekstase",
+    "Espresso-Eleganz",
+    "Espresso-Explosion",
+    "Flitz-Fundstück",
+    "Genuss-Gebräu",
+    "Highspeed-Hydration",
+    "Kaffee-Katapult",
+    "Kaffee-Kunstwerk",
+    "Koffein-Kanone",
+    "Koffein-Kick",
+    "Koffein-Kuss",
+    "Krema-Komet",
+    "Morgen-Magie",
+    "Munter-Maschine",
+    "Munter-Mokka",
+    "Munter-Munition",
+    "Nerven-Nitro",
+    "Power-Punsch",
+    "Power-Potion",
+    "Raketen-Ristretto",
+    "Röst-Rakete",
+    "Röst-Romantik",
+    "Schluck-Schub",
+    "Schuss-Schwung",
+    "Siebträger-Saft",
+    "Siebträger-Schorle",
+    "Start-Schuss",
+    "Tempo-Tropfen",
+    "Turbo-Tasse",
+    "Wach-Watsche",
+    "Wach-Wumms",
+    "Wach-Wunder",
+    "Wachmacher-Waffe",
+    "Wahrnehmungs-Wecker",
+    "Zitter-Zwerg",
+];
+
+function pickCoffee() {
+    const coffee = coffees[Math.floor(Math.random() * coffees.length)];
+
+    const el = document.getElementById("coffee");
+
+    el.classList.remove("fade");
+    void el.offsetWidth; // restart animation
+
+    el.textContent = coffee;
+    el.classList.add("fade");
+}
+
+pickCoffee();
+</script>
+
+</body>
+</html>
